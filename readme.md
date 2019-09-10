@@ -10,10 +10,9 @@ because the author does not know vimscript.
 ### installation
 
 ```shell
-# no git, remember?
-curl -sL https://github.com/nerdypepper/unipack/tarball/master | tar xzf
-mkdir -p "$HOME/bin"
-mv unipack/unipack.sh $HOME/bin/
+curl -sS https://files.nerdypepper.me/unipack.sh -o install.sh
+chmod +x install.sh
+./install.sh
 ```
 
 ### usage
@@ -48,3 +47,9 @@ unipack install tpope/vim-surround
 ```shell
 unipack remove tpope/vim-surround
 ```
+
+### contributing
+
+pull requests are welcome.  
+found an error? build git and use vim-plug instead.  
+love `unipack`? yeah me too.

@@ -41,6 +41,17 @@ remove() {
     local pack_name="$( basename $target )"
     sed -i -e "\;$target;d" "$HOME/.uniplugins"
     rm -rf "$pack_dir/$pack_name"
+    echo "Removing ... $1"
+}
+
+get_help() {
+    echo "Unipack - Akshay Oppiliappan <nerdypepper@tuta.io>"
+    echo
+    echo "Usage:"
+    echo "unipack"
+    echo "     .. install author/plugin     to install a plugin"
+    echo "     .. remove  author/plugin     to remove a plugin"
+    echo "     .. update                    to update all plugins"
 }
 
 case $1 in

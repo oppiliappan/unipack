@@ -56,8 +56,15 @@ get_help() {
 
 case $1 in
     i|install)
-        install
+        install $2
         ;;
     r|remove)
-
-
+        remove $2
+        ;;
+    u|update)
+        update
+        ;;
+    *)
+        echo -e "\e[31mInvalid usage\e[0m"
+        get_help
+esac

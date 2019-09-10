@@ -5,15 +5,20 @@ source "$HOME/.unipack.conf"
 install() {
     mkdir -p $temp
     mkdir -p $pack_dir
-    while IFS= read -r line; do
-        local pack_name="$(basename $line)"
-        local url="https://github.com/$line/tarball/master"
-        curl -L "$url" -o "$temp/$pack_name.tar"
-        mkdir -p "$pack_dir/$pack_name"
-        tar xzf "$temp/$pack_name.tar" -C "$pack_dir/$pack_name" \
-            --strip-components 1
-        rm -rf "$temp"
-    done < "$HOME/.uniplugins"
+    local pack_name="$(basename $1)"
+    local url="https://github.com/$1/tarball/master"
+
+    # download
+    echo "Installing ... $1"
+    curl -sL "$url" -o "$temp/$pack_name.tar"
+
+    # unpack
+    mkdir -p "$pack_dir/$pack_name"
+    tar xzf "$temp/$pack_name.tar" -C "$pack_dir/$pack_name" \
+        --strip-components 1
+
+    # cleanup
+    rm -rf "$temp"
 }
 
 update() {

@@ -2,7 +2,8 @@
 
 source "$HOME/.unipack.conf"
 
-install() {
+fetch() {
+    # setup
     mkdir -p $temp
     mkdir -p $pack_dir
     local pack_name="$(basename $1)"
@@ -21,8 +22,18 @@ install() {
     rm -rf "$temp"
 }
 
-update() {
+install() {
+    fetch $1
+    echo $1 >> "$HOME/.uniplugins"
+    sed -i -e '/^$/d' "$HOME/.uniplugins"
+}
 
+update() {
+    while IFS= read -r line; do
+        if [ ! -e "$pack_dir/$line" ]; then
+            fetch $line
+        fi
+    done < "$HOME/.uniplugins"
 }
 
 remove() {

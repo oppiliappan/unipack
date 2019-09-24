@@ -11,7 +11,15 @@ fetch() {
 
     # download
     echo "Installing ... $1"
-    wget https://github.com/T-PWK/flake-idgen/tarball/master -O "$temp/$pack_name.tar"
+
+    if hash curl > /dev/null; then
+        curl -sL "$url" -o "$temp/$pack_name.tar"
+    elif hash wget > /dev/null; then
+        wget "$url" -q -O "$temp/$pack_name.tar"
+    else
+        echo "Install curl or wget"
+        exit 1
+    fi
 
     # unpack
     mkdir -p "$pack_dir/$pack_name"

@@ -4,8 +4,8 @@ source "$HOME/.unipack.conf"
 
 fetch() {
     # setup
-    mkdir -p $temp
-    mkdir -p $pack_dir
+    mkdir -p "$temp"
+    mkdir -p "$pack_dir"
     local pack_name="$(basename $1)"
     local url="https://github.com/$1/tarball/master"
 

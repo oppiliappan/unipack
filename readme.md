@@ -10,7 +10,7 @@ because the author does not know vimscript.
 ### installation
 
 ```shell
-curl -sS https://files.nerdypepper.tech/unipack.sh -o install.sh
+curl -sS https://u.peppe.rs/unipack.sh -o install.sh
 chmod +x install.sh
 ./install.sh
 ```

@@ -39,9 +39,10 @@ install() {
 update() {
     while IFS= read -r line; do
         if [ ! -e "$pack_dir/$line" ]; then
-            fetch $line
+            fetch $line &
         fi
     done < "$HOME/.uniplugins"
+    wait
 }
 
 remove() {
